@@ -127,7 +127,10 @@ header {
 }
 
 
+.content {
+    margin: 150px;
 
+}
 
 @media (max-width: 1090px) {
     #menu-icon {
