@@ -10,7 +10,7 @@
 </head>
 <body>
 <header>
-    <a href="../admin/productContent.php" class="logo"><i class="bx bx-scan"></i><span>SwiftScan</span></a>
+    <a href="../admin/productContent.php" class="logo"><i class="bx bx-scan"></i><span>SariSolve</span></a>
 
     <ul class="navbar">
       <li><a href="../admin/productContent.php" class="products">Products</a></li>
@@ -30,6 +30,33 @@
 
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
                 <!-- Your main content goes here -->
+                <form action="add_product.php" method="post">
+        <label for="name">Product Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" required>
+
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" required>
+
+        <button type="submit">Add Product</button>
+    </form>
+
+    <div class="product-list">
+        <?php
+        require_once 'Inventory.php';
+
+        $inventory = new Inventory();
+        $products = $inventory->getAllProducts();
+
+        foreach ($products as $product) {
+            echo "<div class='product'>";
+            $product->display();
+            echo "</div>";
+        }
+        ?>
+    </div>
             </main>
         </div>
     </div>
