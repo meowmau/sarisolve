@@ -1,5 +1,5 @@
 <?php
-// DbConnection.php
+// connection.php
 class SARISOLVE {
     private $host = 'localhost';
     private $username = 'root';
