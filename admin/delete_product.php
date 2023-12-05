@@ -1,6 +1,6 @@
 <?php
 // delete_product.php
-require_once 'Inventory.php';
+require_once 'inventory.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
     $id = $_GET['id'];

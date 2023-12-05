@@ -2,24 +2,25 @@
 // edit_product.php
 require_once 'inventory.php';
 
-// Decode JSON data
-$data = json_decode(file_get_contents('php://input'), true);
+// Check if the form is submitted
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Retrieve data from the form
+    $id = $_POST['productid']; // Corrected from 'id' to 'productid'
+    $name = $_POST['name'];
+    $price = $_POST['price'];
+    $quantity = $_POST['quantity'];
 
-if ($data) {
-    $id = $data['productid'];
-    $name = $data['name'];
-    $price = $data['price'];
-    $quantity = $data['quantity'];
-
+    // Instantiate the Inventory class
     $inventory = new Inventory();
-    $success = $inventory->editProduct($id, $name, $price, $quantity);
 
-    // Return JSON response
-    echo json_encode(['success' => $success]);
+    // Call the editProduct method to update the product
+    $inventory->editProduct($id, $name, $price, $quantity);
+
+    // Redirect to the product content page or any other desired page after editing
+    header('Location: productContent.php');
     exit();
 } else {
-    // Return JSON response for error
-    echo json_encode(['success' => false, 'error' => 'Invalid data']);
-    exit();
+    // Invalid request method
+    echo 'Invalid request method';
 }
 ?>
