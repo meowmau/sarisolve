@@ -18,7 +18,7 @@
         </ul>
         <div class="main">
             <div class="user-dropdown">
-                <img src="#" alt="User Icon" id="user-icon">
+                <img src="../pictures/admin.png" alt="User Icon" id="user-icon">
                 <div class="user-dropdown-content">
                     <a href="../home/login.php">Logout</a>
                 </div>
@@ -36,7 +36,7 @@
 
             <div class="row">
                 <div class="col-md-6">
-                    <div class="card">
+                    <div class="card-01">
                         <div class="card-body">
                             <h3 class="card-title">Revenue Today</h3>
                             <p class="card-text" id="revenueToday"></p>
@@ -44,7 +44,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="card">
+                    <div class="card-02">
                         <div class="card-body">
                             <h3 class="card-title">Sales Today</h3>
                             <p class="card-text" id="salesCount"></p>
@@ -55,7 +55,7 @@
 
             <div class="row mt-4">
                 <div class="col-md-6">
-                    <div class="card">
+                    <div class="card-03">
                         <div class="card-body">
                             <h3 class="card-title">Recently Added Products</h3>
                             <ul id="recentlyAddedProducts"></ul>
@@ -63,7 +63,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="card">
+                    <div class="card-04">
                         <div class="card-body">
                             <h3 class="card-title">Recent Sales</h3>
                             <ul id="recentSales"></ul>
@@ -104,7 +104,7 @@
     // Display Recently Added Products
     var recentlyAddedProductsList = document.getElementById('recentlyAddedProducts');
     recentlyAddedProductsList.innerHTML = `
-        <ul>
+        <ul class="card-text">
             ${<?php echo json_encode($recentlyAddedProducts); ?>.map(product => `<li>${product.name}</li>`).join('')}
         </ul>
     `;
@@ -112,7 +112,7 @@
     // Display Recent Sales
     var recentSalesList = document.getElementById('recentSales');
     recentSalesList.innerHTML = `
-        <ul>
+        <ul class="card-text">
             ${<?php echo json_encode($recentSales); ?>.map(sale => `<li>${sale}</li>`).join('')}
         </ul>
     `;

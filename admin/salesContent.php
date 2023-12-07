@@ -9,7 +9,9 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../CSS/dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <link rel="stylesheet" href="../CSS/sales.css">
 </head>
 <body>
 <header>
@@ -18,7 +20,6 @@
     <ul class="navbar">
       <li><a href="../admin/productContent.php" class="products">Products</a></li>
       <li><a href="../admin/salesContent.php" class="sales">Sales</a></li>
-      <li><a href="../admin/reportContent.php" class="report">Report</a></li>
     </ul>
 
     <div class="main">
@@ -29,11 +30,24 @@
             </div>
         </div>
     </header>
+
+    <h1 class="text-center text-white mt-4">Sales</h1>
+
     <main role="main" class="content">
+        <!-- Container for Filter and Add Sale button -->
+        <div class="filter-container">
+        <!-- Add a filter for sales by date using calendar -->
+        <div class="filter-group">
+            <label for="filter_date">Filter by Date:</label>
+            <input type="date" name="filter_date" id="filter_date">
+            <button onclick="applyDateFilter()" class="btn btn-info">Apply Filter</button>
+        </div>
+
         <!-- Button to trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#salesModal">
-    Add Sale
-</button>
+        <button type="button" class="btn btn-primary add-sale-btn" data-toggle="modal" data-target="#salesModal">
+            Add Sale
+        </button>
+    </div>
 
 <!-- Modal -->
 <div class="modal fade" id="salesModal" tabindex="-1" role="dialog" aria-labelledby="salesModalLabel" aria-hidden="true">
@@ -110,12 +124,6 @@
 </div>
 
 
-            <!-- Add a filter for sales by date using calendar -->
-            <div>
-                <label for="filter_date">Filter by Date:</label>
-                <input type="date" name="filter_date" id="filter_date">
-                <button onclick="applyDateFilter()" class="btn btn-info">Apply Filter</button>
-            </div>
 
             <!-- Your existing table to display sales data -->
             <table class="table" id="productTable">
@@ -227,6 +235,24 @@
             }
         }
     });
+
+    // Function to show SweetAlert confirmation before submitting the form
+    function confirmAddSale() {
+        // Use SweetAlert to show a confirmation dialog
+        Swal.fire({
+            title: 'Confirm Sale',
+            text: 'Are you sure you want to add this sale?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, add it!',
+            cancelButtonText: 'Cancel'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // If the user clicks "Yes," submit the form
+                document.getElementById('addSaleForm').submit();
+            }
+        });
+    }
 </script>
 
 </body>

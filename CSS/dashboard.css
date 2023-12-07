@@ -131,24 +131,6 @@ header {
     color: #fff;
 }
 
-/* Styles for the search container */
-.search-container {
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-}
-
-label {
-    margin-right: 10px;
-    color: var(--text-color);
-}
-
-input[type="text"], select {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
 /* Styles for modals */
 .modal {
     color: var(--text-color);
@@ -172,70 +154,83 @@ input[type="text"], select {
     padding: 20px;
 }
 
-/* Styles for buttons */
-.btn {
-    padding: 10px 20px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    cursor: pointer;
-}
-
-.btn-primary {
-    background-color: var(--main-color);
-    border: none;
-    color: #fff;
-}
-
-.btn-primary:hover {
-    background-color: #218838;
-}
-
-.btn-success {
-    background-color: #28a745;
-    border: none;
-    color: #fff;
-}
-
-.btn-success:hover {
-    background-color: #218838;
-}
-
-.btn-info {
-    background-color: #17a2b8;
-    border: none;
-    color: #fff;
-}
-
-.btn-info:hover {
-    background-color: #138496;
-}
-
-.btn-secondary {
-    background-color: #6c757d;
-    border: none;
-    color: #fff;
-}
-
-.btn-secondary:hover {
-    background-color: #545b62;
-}
-
 th,
 tr,
 tbody  {
     color: #fff;
 }
+
 .content {
     margin: 150px;
+    text-align: center;
+}
+
+.row{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+.card-01{
+    background-color: #03D29F; /* Replace with the color you want */
+    position: relative;
+    flex: 1;
+    max-width: 900px;
+    height: 250px;
+    margin: 10px;
+    border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.card-02{
+    background-color: #50A7FF; /* Replace with the color you want */
+    position: relative;
+    flex: 1;
+    max-width: 900px;
+    height: 250px;
+    margin: 10px;
+    border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.card-03{
+    background-color: #FF7675; /* Replace with the color you want */
+    position: relative;
+    flex: 1;
+    max-width: 900px;
+    height: 250px;
+    margin: 10px;
+    border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.card-04{
+    background-color: #e5eaa0; /* Replace with the color you want */
+    position: relative;
+    flex: 1;
+    max-width: 900px;
+    height: 250px;
+    margin: 10px;
+    border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
 .card-title {
     color: #000000;
+    font-family: 'Playfair Display', serif;
+    font-style: oblique;
+    font-weight: bold; 
 }
 
-p {
-    color: #000000;
+.card-text {
+    font-family: 'Nunito', sans-serif;
+    color: black; /* Change to your desired text color */
+    font-weight: normal; /* Optionally set the font weight */
+    font-size: 15px; /* Optionally set the font size */
 }
+
 
 #revenueToday,
 #totalCapital,
@@ -271,5 +266,13 @@ p {
 
     .navbar a.active {
         display: block;
+    }
+
+    .card-01,
+    .card-02,
+    .card-03,
+    .card-04{
+        flex: 100%;
+        max-width: 600px;
     }
 }
