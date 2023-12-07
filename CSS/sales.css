@@ -1,0 +1,343 @@
+/* Styles for the entire document */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    list-style: none;
+}
+
+h1.text-center {
+    color: #fff; /* Adjust the color as needed */
+    margin-top: 20px; /* Adjust the top margin as needed */
+    font-size: 2.5rem; /* Adjust the font size as needed */
+    font-family: 'Playfair Display', serif;
+    font-style:oblique;
+    font-weight: bold;
+}
+
+:root {
+    --bg-color: #222327;
+    --text-color: #fff;
+    --main-color: #03D29F;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--bg-color);
+    color: var(--text-color);
+    margin-top: 120px;
+}
+
+/* Styles for the header */
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #333333;
+    padding: 28px 12%;
+    transition: all .50s ease;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo i {
+    color: var(--main-color);
+    font-size: 28px;
+    margin-right: 3px;
+}
+
+.logo span {
+    color: var(--text-color);
+    font-size: 1.7rem;
+    font-weight: 600;
+}
+
+/* Styles for the navigation bar */
+.navbar {
+    display: flex;
+}
+
+.navbar a {
+    color: var(--text-color);
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 5px 0;
+    margin: 0px 30px;
+    transition: all .50s ease;
+}
+
+.navbar a:hover {
+    color: var(--main-color)
+}
+
+.navbar a.active {
+    color: var(--main-color);
+}
+
+/* Styles for the main content */
+.main {
+    display: flex;
+    align-items: center;
+}
+
+.main a {
+    margin-right: 25px;
+    margin-left: 10px;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: all .50s ease;
+}
+
+#user-icon {
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    margin-right: 15px;
+    border-radius: 50%;
+}
+
+/* Styles for user dropdown */
+.user-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.user-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #000000;
+    min-width: 150px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 5px;
+    top: 100%; /* Position the dropdown content below the user-dropdown */
+}
+
+.user-dropdown:hover .user-dropdown-content {
+    display: block;
+}
+
+.user-dropdown-content a {
+    padding: 12px;
+    text-decoration: none;
+    display: block;
+    color: #333;
+    transition: background-color 0.3s ease;
+}
+
+.user-dropdown-content:hover {
+    background-color: #29fd53;
+    color: #fff;
+}
+
+/* Styles for the search container */
+.search-container {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+label {
+    margin-right: 10px;
+    color: var(--text-color);
+}
+
+input[type="date"],
+select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: 5px;
+}
+
+/* Add margin-left: auto to push the button to the right */
+.btn-primary {
+    background-color: var(--main-color);
+    border: none;
+    color: #fff;
+    margin-left: auto;
+}
+
+
+/* Styles for modals */
+.modal {
+    color: var(--text-color);
+}
+
+.modal-content {
+    background-color: #fff;
+}
+
+.modal-header {
+    border-bottom: 1px solid #ddd;
+    background-color: #333333;
+    color: var(--text-color);
+}
+
+.modal-title {
+    color: var(--text-color);
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+
+.modal label {
+    display: block;
+    margin-bottom: 5px;
+    color: #000;
+}
+
+.modal input[type="text"],
+.modal input[type="number"],
+.modal input[type="date"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Table styles */
+.table {
+    max-width: 95%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin: auto;
+}
+
+.table th,
+.table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    text-wrap: wrap;
+}
+
+.table th {
+    background-color: #333;
+    color: #fff;
+
+}
+
+.table tbody tr:hover {
+    background-color: #f5f5f5;
+    color: #000;
+}
+
+
+
+
+/* Styles for buttons */
+.btn {
+    padding: 10px 20px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--main-color);
+    border: none;
+    color: #fff;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border: none;
+    color: #fff;
+    margin-left: 235px;
+}
+
+.btn-primary:hover {
+    background-color: #218838;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border: none;
+    color: #fff;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+.btn-info {
+    background-color: #17a2b8;
+    border: none;
+    color: #fff;
+}
+
+.btn-info:hover {
+    background-color: #138496;
+}
+
+.btn-secondary:hover {
+    background-color: #545b62;
+}
+
+th,
+tr,
+tbody {
+    color: #fff;
+}
+
+@media (max-width: 1090px) {
+    #menu-icon {
+        display: block;
+    }
+
+    .navbar {
+        position: absolute;
+        top: 100%;
+        right: -100%;
+        width: 270px;
+        height: 29vh;
+        background: var(--main-color);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        border-radius: 10px;
+        transition: all .50s ease;
+    }
+
+    .navbar a {
+        display: block;
+        margin: 12px 0;
+        padding: 0px 25px;
+        transition: all 0.50s ease;
+    }
+
+    .navbar a.active {
+        display: block;
+    }
+}
+
+/* Additional styles for filter and Add Sale button */
+.filter-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.filter-group {
+    margin-left: 50px;
+}
+
+.add-sale-btn {
+    margin-right: 50px; /* This will push the button to the far right */
+}

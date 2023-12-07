@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Owner Dashboard</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../CSS/dashboard.css">
+    <link rel="stylesheet" href="../CSS/product.css">
 </head>
 
 <body>
@@ -16,17 +16,18 @@
         <ul class="navbar">
             <li><a href="../admin/productContent.php" class="products">Products</a></li>
             <li><a href="../admin/salesContent.php" class="sales">Sales</a></li>
-            <li><a href="../admin/reportContent.php" class="report">Report</a></li>
         </ul>
 
         <div class="main">
             <div class="user-dropdown">
-                <img src="#" alt="User Icon" id="user-icon">
+                <img src="../pictures/admin.png" alt="User Icon" id="user-icon">
                 <div class="user-dropdown-content">
-                    <a href="../home/login.php">Logout</a>
+                    <a href="../home/index.php">Logout</a>
                 </div>
             </div>
     </header>
+
+    <h1 class="text-center text-white mt-4">Products</h1>
 
     <main role="main" class="content">
         <div class="search-container">
@@ -38,6 +39,10 @@
                 <option value="2">Price</option>
                 <option value="3">Quantity</option>
             </select>
+
+            <button class="btn btn-primary" data-toggle="modal" data-target="#addProductModal">
+                Add Product
+            </button>
         </div>
         
         <!-- Add Product Modal -->
@@ -95,15 +100,13 @@
 
                             <!-- Use onclick to trigger the editProduct function -->
                             <button type="submit" class="btn btn-info">Save</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-cancel" data-dismiss="modal">Cancel</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Button to open the Add Product Modal -->
-        <button class="btn btn-primary" data-toggle="modal" data-target="#addProductModal">Add Product</button>
 
         <!-- Your existing HTML for the product table -->
         <table class="table" id="productTable">
@@ -146,6 +149,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
     <script>
         function searchProducts() {
         // Declare variables
