@@ -11,7 +11,7 @@
 :root {
     --bg-color: #222327;
     --text-color: #fff;
-    --main-color: #29fd53;
+    --main-color: #03D29F; /* This is the color for the navigation bar hover effect */
 }
 
 body {
@@ -32,24 +32,17 @@ header {
     justify-content: space-between;
     background: #333333;
     padding: 28px 12%;
-    transition: all .50s ease;
+    transition: background .50s ease; /* Transition only the background */
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-}
-
-.logo i {
-    color: var(--main-color);
-    font-size: 28px;
-    margin-right: 3px;
-}
-
-.logo span {
-    color: var(--text-color);
-    font-size: 1.7rem;
-    font-weight: 600;
+h1.text-center {
+    color: #fff;
+    margin-top: auto;
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    font-family: 'Playfair Display', serif;
+    font-style: oblique;
+    font-weight: bold;
 }
 
 /* Styles for the navigation bar */
@@ -59,15 +52,17 @@ header {
 
 .navbar a {
     color: var(--text-color);
-    font-size: 1.1rem;
+    font-size: 1.5rem;
     font-weight: 500;
     padding: 5px 0;
     margin: 0px 30px;
-    transition: all .50s ease;
+    transition: color .50s ease;
+    text-decoration: none; /* Add this line to remove underline */
 }
 
 .navbar a:hover {
-    color: var(--main-color)
+    color: var(--main-color);
+    text-decoration: none; /* Add this line to remove underline on hover */
 }
 
 .navbar a.active {
@@ -86,7 +81,7 @@ header {
     color: var(--text-color);
     font-size: 1.1rem;
     font-weight: 500;
-    transition: all .50s ease;
+    transition: color .50s ease;
 }
 
 #user-icon {
@@ -111,7 +106,7 @@ header {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1;
     border-radius: 5px;
-    top: 100%; /* Position the dropdown content below the user-dropdown */
+    top: 100%;
 }
 
 .user-dropdown:hover .user-dropdown-content {
@@ -127,7 +122,7 @@ header {
 }
 
 .user-dropdown-content:hover {
-    background-color: #29fd53;
+    background-color: var(--main-color);
     color: #fff;
 }
 
@@ -165,7 +160,7 @@ tbody  {
     text-align: center;
 }
 
-.row{
+.row {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -173,48 +168,30 @@ tbody  {
     margin: 0 auto;
 }
 
-.card-01{
+.card {
+    position: relative;
+    flex: 1;
+    max-width: 900px;
+    height: 250px;
+    margin: 10px;
+    border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.card-01 {
     background-color: #03D29F; /* Replace with the color you want */
-    position: relative;
-    flex: 1;
-    max-width: 900px;
-    height: 250px;
-    margin: 10px;
-    border-radius: 5px; /* Optional: Add border-radius for rounded corners */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
-.card-02{
+.card-02 {
     background-color: #50A7FF; /* Replace with the color you want */
-    position: relative;
-    flex: 1;
-    max-width: 900px;
-    height: 250px;
-    margin: 10px;
-    border-radius: 5px; /* Optional: Add border-radius for rounded corners */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
-.card-03{
+.card-03 {
     background-color: #FF7675; /* Replace with the color you want */
-    position: relative;
-    flex: 1;
-    max-width: 900px;
-    height: 250px;
-    margin: 10px;
-    border-radius: 5px; /* Optional: Add border-radius for rounded corners */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
-.card-04{
+.card-04 {
     background-color: #e5eaa0; /* Replace with the color you want */
-    position: relative;
-    flex: 1;
-    max-width: 900px;
-    height: 250px;
-    margin: 10px;
-    border-radius: 5px; /* Optional: Add border-radius for rounded corners */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
 .card-title {
@@ -222,21 +199,52 @@ tbody  {
     font-family: 'Playfair Display', serif;
     font-style: oblique;
     font-weight: bold; 
+    font-size: 1.5rem; /* Adjust the font size as needed */
+    line-height: 1.2; /* Adjust the line height as needed for better readability */
 }
 
 .card-text {
     font-family: 'Nunito', sans-serif;
-    color: black; /* Change to your desired text color */
-    font-weight: normal; /* Optionally set the font weight */
-    font-size: 15px; /* Optionally set the font size */
+    color: black;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 1.4;
 }
-
 
 #revenueToday,
 #totalCapital,
 #recentlyAddedProducts,
 #recentSales  {
     color: #000000;
+}
+
+.logo {
+    display: inline-block;
+    text-decoration: none;
+    overflow: hidden;
+}
+
+.logo img {
+    width: 30px; /* Adjust the width as needed */
+    height: 30px; /* Adjust the height as needed */
+    border-radius: 50%;
+}
+
+.logo i {
+    font-size: 24px; /* Adjust the icon size as needed */
+    margin-right: 5px; /* Adjust the spacing between icon and text as needed */
+}
+
+.logo span {
+    vertical-align: middle;
+    font-size: 1.7rem;
+    font-weight: 600; /* Adjust the font size as needed */
+    color: var(--text-color);
+    transition: color 0.3s ease; /* Smooth transition for text color change */
+}
+
+.logo span:hover {
+    color: var(--main-color);
 }
 
 @media (max-width: 1090px) {
@@ -268,10 +276,7 @@ tbody  {
         display: block;
     }
 
-    .card-01,
-    .card-02,
-    .card-03,
-    .card-04{
+    .card {
         flex: 100%;
         max-width: 600px;
     }

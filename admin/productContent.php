@@ -11,7 +11,7 @@
 
 <body>
     <header>
-        <a href="dashboard.php" class="logo"><i class="bx bx-scan"></i><span>SariSolve</span></a>
+    <a href="dashboard.php" class="logo"> <img src="../pictures/logo.png" alt="Logo"> <span>SariSolve</span></a>
 
         <ul class="navbar">
             <li><a href="../admin/productContent.php" class="products">Products</a></li>
@@ -27,7 +27,7 @@
             </div>
     </header>
 
-    <h1 class="text-center text-white mt-4">Products</h1>
+    <h1 class="text-center">Products</h1>
 
     <main role="main" class="content">
         <div class="search-container">
@@ -40,7 +40,7 @@
                 <option value="3">Quantity</option>
             </select>
 
-            <button class="btn btn-primary" data-toggle="modal" data-target="#addProductModal">
+            <button class="btn btn-primary add-product-btn" data-toggle="modal" data-target="#addProductModal">
                 Add Product
             </button>
         </div>
@@ -149,6 +149,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
     <script>
         function searchProducts() {
@@ -173,15 +174,87 @@
         }
     }
 
-        function editProduct(id, name, price, quantity) {
-            // Set the values of the input fields in the modal
-            document.getElementById('editProductId').value = id;
-            document.getElementById('editName').value = name;
-            document.getElementById('editPrice').value = price;
-            document.getElementById('editQuantity').value = quantity;
+    function editProduct(id, name, price, quantity) {
+        // Set the values of the input fields in the modal
+        document.getElementById('editProductId').value = id;
+        document.getElementById('editName').value = name;
+        document.getElementById('editPrice').value = price;
+        document.getElementById('editQuantity').value = quantity;
 
-            // Show the "Edit Product" modal
-            $('#editProductModal').modal('show');
-        }
-    </script></body>
+        // Show the "Edit Product" modal
+        $('#editProductModal').modal('show');
+    }
+
+    // Add SweetAlert before form submission
+    document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('addProductModal').querySelector('form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: 'You are about to add a new product!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, add it!',
+                cancelButtonText: 'No, cancel!',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Proceed with form submission
+                    event.target.submit();
+                } else {
+                    // Cancel the action
+                    Swal.fire('Cancelled', 'Your action has been cancelled.', 'info');
+                }
+            });
+        });
+
+        // Add SweetAlert before form submission for editing
+        document.getElementById('editProductModal').querySelector('form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: 'You are about to save changes!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, save it!',
+                cancelButtonText: 'No, cancel!',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Proceed with form submission
+                    event.target.submit();
+                } else {
+                    // Cancel the action
+                    Swal.fire('Cancelled', 'Your action has been cancelled.', 'info');
+                }
+            });
+        });
+
+        // Add SweetAlert before delete action
+        const deleteButtons = document.querySelectorAll('.btn-danger');
+        deleteButtons.forEach(function (button) {
+            button.addEventListener('click', function (event) {
+                event.preventDefault();
+
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: 'You won\'t be able to revert this!',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes, delete it!',
+                    cancelButtonText: 'No, cancel!',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Proceed with delete action
+                        window.location.href = event.target.getAttribute('href');
+                    } else {
+                        // Cancel the action
+                        Swal.fire('Cancelled', 'Your action has been cancelled.', 'info');
+                    }
+                });
+            });
+        });
+    });
+    </script>
+    </body>
 </html>
