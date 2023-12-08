@@ -19,7 +19,7 @@
             <div class="user-dropdown">
                 <img src="../pictures/admin.png" alt="User Icon" id="user-icon">
                 <div class="user-dropdown-content">
-                    <a href="../home/login.php">Logout</a>
+                    <a href="../home/index.php">Logout</a>
                 </div>
             </div>
         </div>
@@ -29,7 +29,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="text-center"> Welcome, [Username]!</h1>
+                    <h1 class="text-center">Dashboard</h1>
                 </div>
             </div>
 

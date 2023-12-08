@@ -1,28 +1,60 @@
 <?php
-include '../home/connection.php';  // Include the connection file to define $conn
+// login.php
 
-session_start();
+// Include the connection.php file
+require_once('../admin/connection.php');
 
-if (isset($_POST['login'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    // Check if the owner's credentials are valid
-    $stmt = $conn->prepare("SELECT * FROM owners WHERE username=? AND password=?");
-    $stmt->bind_param("ss", $username, $password);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $stmt->close();
-
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        // Login successful
-        $_SESSION['owner_id'] = $row['id'];
-        header("Location: dashboard.php"); // Redirect to the dashboard page
-        exit();  // Ensure that no code is executed after the redirect
-    } else {
-        echo "Invalid credentials";
+class Login extends SARISOLVE {
+    public function __construct() {
+        parent::__construct();
     }
+
+    public function loginUser($username, $password) {
+        // Validate that both username and password are provided
+        if (empty($username) || empty($password)) {
+            echo "Please enter both username and password.";
+            return;
+        }
+
+        // Sanitize user input to prevent SQL injection
+        $username = $this->conn->real_escape_string($username);
+
+        // Retrieve hashed password from the database
+        $query = "SELECT password FROM users WHERE username = '$username'";
+        $result = $this->conn->query($query);
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $hashedPassword = $row['password'];
+
+            // Verify the password using password_verify
+            if (password_verify($password, $hashedPassword)) {
+                // Login successful
+                // Redirect to dashboard.php
+                header("Location: ../admin/dashboard.php");
+                exit(); // Ensure that no more code is executed after the redirection
+            } else {
+                // Invalid password
+                echo "Invalid password";
+            }
+        } else {
+            // User not found
+            echo "User not found";
+        }
+    }
+}
+
+// Check if the form is submitted
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Create an instance of the Login class
+    $login = new Login();
+
+    // Get the user input from the form
+    $username = isset($_POST['username']) ? $_POST['username'] : '';
+    $password = isset($_POST['password']) ? $_POST['password'] : '';
+
+    // Call the loginUser method to validate the login
+    $login->loginUser($username, $password);
 }
 ?>
 
@@ -36,7 +68,7 @@ if (isset($_POST['login'])) {
 </head>
 <body>
 
-    <form action="login.php" method="post">
+    <form action="" method="post"> <!-- Update the form action attribute -->
         <h1>Login</h1>
         <label for="username">Username:</label>
         <input type="text" name="username" required>

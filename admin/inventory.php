@@ -81,10 +81,8 @@ class Inventory extends SARISOLVE {
         $stmt = $this->conn->prepare("UPDATE products SET quantity = quantity - ? WHERE productid = ?");
         $stmt->bind_param("ii", $quantitySold, $productId);
         $stmt->execute();
-    
         $stmt->close();
     }
-    
 
     public function getAllSales() {
         $sql = "SELECT sales.*, products.name as product_name FROM sales
@@ -130,12 +128,64 @@ class Inventory extends SARISOLVE {
     }
 
     public function deleteSale($saleId) {
-        $sql = "DELETE FROM sales WHERE saleid=?";
-        $stmt = $this->conn->prepare($sql);
+        // Fetch the productid and quantitysold from the sales table
+        $stmt = $this->conn->prepare("SELECT productid, quantitysold FROM sales WHERE saleid = ?");
         $stmt->bind_param("i", $saleId);
+        $stmt->execute();
+        $stmt->bind_result($productId, $quantitySold);
+        
+        // Check if the sale exists
+        if ($stmt->fetch()) {
+            $stmt->close();
+    
+            // Update the quantity in the products table
+            $updateProductsQuery = "UPDATE products SET quantity = quantity + $quantitySold WHERE productid = $productId";
+            $this->conn->query($updateProductsQuery);
+    
+            // Delete the sale from the sales table
+            $stmt = $this->conn->prepare("DELETE FROM sales WHERE saleid = ?");
+            $stmt->bind_param("i", $saleId);
+            $stmt->execute();
+            $stmt->close();
+    
+            return "success";
+        } else {
+            $stmt->close();
+            return "Sale not found";
+        }
+    }
+    
+    
+
+    
+    public function returnQuantityToProduct($productId, $saleId) {
+        // Fetch the quantity sold for the specified sale
+        $quantitySold = $this->getQuantitySoldForSale($saleId);
+
+        // Update the product quantity in products table
+        $updateProductQuery = "UPDATE products SET quantity = quantity + ? WHERE product_id = ?";
+        $stmt = $this->conn->prepare($updateProductQuery);
+        $stmt->bind_param("ii", $quantitySold, $productId);
         $stmt->execute();
         $stmt->close();
     }
+
+    // Helper function to get the quantity sold for a specific sale
+    private function getQuantitySoldForSale($saleId) {
+        $stmt = $this->conn->prepare("SELECT quantitysold FROM sales WHERE saleid = ?");
+        $stmt->bind_param("i", $saleId);
+        $stmt->execute();
+        $stmt->bind_result($quantitySold);
+        $stmt->fetch();
+        $stmt->close();
+
+        return $quantitySold;
+    }
+
+
+
+
+
 
 
 // Inside the Inventory class
@@ -244,7 +294,6 @@ public function getSalesByDate($date)
     
         return $recentSales;
     }
-    
 }
 ?>
     
