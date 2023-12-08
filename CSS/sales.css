@@ -10,7 +10,7 @@
 
 h1.text-center {
     color: #fff; /* Adjust the color as needed */
-    margin-top: 20px; /* Adjust the top margin as needed */
+    margin-top: 150px; /* Adjust the top margin as needed */
     font-size: 2.5rem; /* Adjust the font size as needed */
     font-family: 'Playfair Display', serif;
     font-style:oblique;
@@ -45,23 +45,6 @@ header {
     transition: all .50s ease;
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-}
-
-.logo i {
-    color: var(--main-color);
-    font-size: 28px;
-    margin-right: 3px;
-}
-
-.logo span {
-    color: var(--text-color);
-    font-size: 1.7rem;
-    font-weight: 600;
-}
-
 /* Styles for the navigation bar */
 .navbar {
     display: flex;
@@ -69,11 +52,12 @@ header {
 
 .navbar a {
     color: var(--text-color);
-    font-size: 1.1rem;
+    font-size: 1.5rem;
     font-weight: 500;
     padding: 5px 0;
     margin: 0px 30px;
     transition: all .50s ease;
+    text-decoration: none; /* Add this line to remove underline */
 }
 
 .navbar a:hover {
@@ -137,7 +121,7 @@ header {
 }
 
 .user-dropdown-content:hover {
-    background-color: #29fd53;
+    background-color: var(--main-color);
     color: #fff;
 }
 
@@ -293,6 +277,35 @@ th,
 tr,
 tbody {
     color: #fff;
+}
+
+.logo {
+    display: inline-block;
+    text-decoration: none;
+    overflow: hidden;
+}
+
+.logo img {
+    width: 30px; /* Adjust the width as needed */
+    height: 30px; /* Adjust the height as needed */
+    border-radius: 50%;
+}
+
+.logo i {
+    font-size: 24px; /* Adjust the icon size as needed */
+    margin-right: 5px; /* Adjust the spacing between icon and text as needed */
+}
+
+.logo span {
+    vertical-align: middle;
+    font-size: 1.7rem;
+    font-weight: 600; /* Adjust the font size as needed */
+    color: var(--text-color);
+    transition: color 0.3s ease; /* Smooth transition for text color change */
+}
+
+.logo span:hover {
+    color: var(--main-color);
 }
 
 @media (max-width: 1090px) {

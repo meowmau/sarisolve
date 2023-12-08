@@ -11,7 +11,7 @@
 
 <body>
     <header>
-        <a href="dashboard.php" class="logo"><i class="bx bx-scan"></i><span>SariSolve</span></a>
+    <a href="dashboard.php" class="logo"> <img src="../pictures/logo.png" alt="Logo"> <span>SariSolve</span></a>
 
         <ul class="navbar">
             <li><a href="../admin/productContent.php" class="products">Products</a></li>
@@ -27,7 +27,7 @@
             </div>
     </header>
 
-    <h1 class="text-center text-white mt-4">Products</h1>
+    <h1 class="text-center">Products</h1>
 
     <main role="main" class="content">
         <div class="search-container">
@@ -40,7 +40,7 @@
                 <option value="3">Quantity</option>
             </select>
 
-            <button class="btn btn-primary" data-toggle="modal" data-target="#addProductModal">
+            <button class="btn btn-primary add-product-btn" data-toggle="modal" data-target="#addProductModal">
                 Add Product
             </button>
         </div>

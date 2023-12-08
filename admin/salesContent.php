@@ -15,7 +15,7 @@
 </head>
 <body>
 <header>
-    <a href="dashboard.php" class="logo"><i class="bx bx-scan"></i><span>SariSolve</span></a>
+<a href="dashboard.php" class="logo"> <img src="../pictures/logo.png" alt="Logo"> <span>SariSolve</span></a>
 
     <ul class="navbar">
       <li><a href="../admin/productContent.php" class="products">Products</a></li>
@@ -31,7 +31,7 @@
         </div>
     </header>
 
-    <h1 class="text-center text-white mt-4">Sales</h1>
+    <h1 class="text-center">Sales</h1>
 
     <main role="main" class="content">
         <!-- Container for Filter and Add Sale button -->

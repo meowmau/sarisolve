@@ -9,12 +9,11 @@
 </head>
 <body>
     <header>
-        <a href="dashboard.php" class="logo"><i class="bx bx-scan"></i><span>SariSolve</span></a>
+    <a href="dashboard.php" class="logo"> <img src="../pictures/logo.png" alt="Logo"> <span>SariSolve</span></a>
 
         <ul class="navbar">
             <li><a href="../admin/productContent.php" class="products">Products</a></li>
             <li><a href="../admin/salesContent.php" class="sales">Sales</a></li>
-            <li><a href="../admin/reportContent.php" class="report">Report</a></li>
         </ul>
         <div class="main">
             <div class="user-dropdown">
@@ -30,7 +29,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="mt-4">Welcome, [Username]!</h1>
+                    <h1 class="text-center"> Welcome, [Username]!</h1>
                 </div>
             </div>
 
